@@ -5,18 +5,18 @@ class Cadastro {
 
   //criar e adiciona usuários, possui pequenas validações
   adiciona(usuario, res) {
-    const dataNascimento = moment(usuario.dataNascimento).format('YYYY-MM-DD HH:mm:ss')
-    //const data = moment().format('YYYY-MM-DD')
+    const dataNascimento = moment(usuario.dataNascimento, 'DD/MM/YYYY').format('YYYY-MM-DD HH:mm:ss')
+    const data = moment().format('YYYY-MM-DD')
     
-    //const dataEhValida = moment(dataNascimento).isSameOrBefore(data)
+    const dataEhValida = moment(dataNascimento).isSameOrBefore(data)
     const nomeEhValido = usuario.nome.length >= 5
 
     const validacoes = [
-      //{
-        //nome: data,
-        //valido: dataEhValida,
-        //mensagem: 'Não é possível cadastrar usuário com essa data de aniversário.'
-      //},
+      {
+        nome: data,
+        valido: dataEhValida,
+        mensagem: 'Não é possível cadastrar usuário com essa data de aniversário.'
+      },
       {
         nome: 'Nome do do usuário',
         valido: nomeEhValido,
@@ -72,18 +72,18 @@ class Cadastro {
 
   //atualizar os usuários que estão cadastrados no sistema
   altera(id, valores, res) {
-    const dataNascimento = moment(valores.dataNascimento).format('YYYY-MM-DD HH:mm:ss')
-    //const data = moment().format('YYYY-MM-DD')
+    const dataNascimento = moment(valores.dataNascimento,'DD/MM/YYYY').format('YYYY-MM-DD HH:mm:ss')
+    const data = moment().format('YYYY-MM-DD')
     
-    //const dataEhValida = moment(dataNascimento).isSameOrBefore(data)
+    const dataEhValida = moment(dataNascimento).isSameOrBefore(data)
     const nomeEhValido = valores.nome.length >= 5
 
     const validacoes = [
-      //{
-        //nome: data,
-        //valido: dataEhValida,
-        //mensagem: 'Não é possível cadastrar usuário com essa data de aniversário.'
-      //},
+      {
+        nome: data,
+        valido: dataEhValida,
+        mensagem: 'Não é possível cadastrar usuário com essa data de aniversário.'
+      },
       {
         nome: 'Nome do do usuário',
         valido: nomeEhValido,
