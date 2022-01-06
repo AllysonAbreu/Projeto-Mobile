@@ -1,4 +1,3 @@
-const express = require('express')
 
 const customExpress = require('./config/customExpress')
 const conexao = require('./infra/conexao')
