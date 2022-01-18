@@ -1,29 +1,23 @@
 {
-  "name": "projeto-mobile",
+  "name": "projeto-app",
   "version": "1.0.0",
-  "description": "Projeto para obtenção de nota de PDM",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "nodemon api/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/AllysonAbreu/Projeto-Mobile.git"
   },
   "author": "Allyson Abreu",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/AllysonAbreu/Projeto-Mobile/issues"
-  },
-  "homepage": "https://github.com/AllysonAbreu/Projeto-Mobile#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "body-parser": "^1.19.1",
-    "consign": "^0.1.6",
-    "dotenv": "^10.0.0",
     "express": "^4.17.2",
-    "moment": "^2.29.1",
-    "mysql2": "^2.3.3"
+    "jsonwebtoken": "^8.5.1",
+    "mysql2": "^2.3.3",
+    "path": "^0.12.7",
+    "sequelize": "^6.13.0",
+    "sequelize-cli": "^6.4.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
