@@ -1,41 +1,51 @@
 const database = require('../models')
-const {
-  senha: {senhaHash, decriptarSenhaHash},
-  jwt: {criarToken}
-} = require('../utils')
+const {senhaHash, decriptarSenhaHash} = require('../utils/gerarSenhaHash')
+const {criarToken} = require('../utils/tokenJwt')
 
 class PessoaController{
 
+  // static async login(req,res) {
+  //   try {
+  //     const {email, senha} = req.body;
+  //     if (!email || !senha) {
+  //         return res.status(400).json({
+  //             status: 400,
+  //             message: "Preencha todos os campos para realizar o login!"
+  //         });
+  //     }
+  //     const verPessoaCadastrada = await database.Pessoas.findOne({where: {email: email}});
+  //     if (verPessoaCadastrada) {
+  //         if (decriptarSenhaHash(senha, verPessoaCadastrada.senha)) {
+  //             const tokenTemporario = criarToken(verPessoaCadastrada);
+  //             res.set('Authorization', tokenTemporario)
+  //             return res.status(204).send();
+  //         }
+  //         return res.status(401).json({
+  //             status: 401,
+  //             message: "Senha inválida"
+  //         });
+  //     }
+  //     return res.status(404).json({
+  //         status: 404,
+  //         message: "Não foi possível encontrar usuário cadastrado com esse e-mail."
+  //     });
+  //   } catch (error) {
+  //     return res.status(500).json(error.message) 
+  //   }
+  // }
+
   static async login(req,res) {
+    const token = criarToken(req.user)
+    res.set('Authorization', token)
+    res.status(204).send()
+  }
+
+  static async logout(req,res){
     try {
-      const {email, senha} = req.body;
-      if (!email || !senha) {
-          return res.status(400).json({
-              status: 400,
-              message: "Preencha todos os campos para realizar o login!"
-          });
-      }
-      const verPessoaCadastrada = await database.Pessoas.findOne({where: {email: email}});
-      if (verPessoaCadastrada) {
-          if (decriptarSenhaHash(senha, verPessoaCadastrada.senha)) {
-              const criarTokenTemporario = criarToken(verPessoaCadastrada);
-              return res.status(200).json({
-                  status: 200,
-                  criarTokenTemporario,
-                  verPessoaCadastrada
-              });
-          }
-          return res.status(401).json({
-              status: 401,
-              message: "Senha inválida"
-          });
-      }
-      return res.status(404).json({
-          status: 404,
-          message: "Não foi possível encontrar usuário cadastrado com esse e-mail."
-      });
+      const token = req.token
+      res.status(204).send()
     } catch (error) {
-      return res.status(500).json(error.message) 
+      res.status(204).json({error:error.message})
     }
   }
 
@@ -46,6 +56,19 @@ class PessoaController{
     } catch (error) {
       return res.status(500).json(error.message) 
     }      
+  }
+
+  static async buscaPorEmail(email) {
+    try {
+      const umaPessoa = await database.Pessoas.findOne({
+        where: {
+           email: email
+          }
+        })
+        return umaPessoa
+    } catch (error) {
+      return res.status(500).json(error.message)
+    }
   }
 
   static async pegaUmaPessoa(req,res) {

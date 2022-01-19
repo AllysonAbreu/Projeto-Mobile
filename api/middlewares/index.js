@@ -1,1 +1,3 @@
-exports.checarJwt = require('./checarTokenJwt');
+module.exports = {
+  middlewaresAutenticacao: require('./middlewares-autenticacao')
+}
