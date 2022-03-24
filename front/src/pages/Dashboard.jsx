@@ -158,7 +158,6 @@ export default function Dashboard(){
         <Heading as="h2">Sobre o Site</Heading>
         <Text as="p" fontSize="lg">
           Este site foi construído com objetivo de obter nota de PDM.
-          com isso, negão deve um rodizio de pasteis a Marcio kkk
         </Text>
       </VStack>
     </Container>
