@@ -10,7 +10,6 @@ import {
   Tag,
   Wrap,
   WrapItem,
-  SpaceProps,
   useColorModeValue,
   Container,
   VStack,
@@ -107,8 +106,7 @@ export default function Dashboard(){
             marginTop="2"
             color={useColorModeValue('gray.700', 'gray.200')}
             fontSize="lg">
-              A intel tem liderado o mercado de processadores com seus poderosos produtos I7 e I9
-              Lorem Ipsum is simply dummy text...
+              texto
           </Text>
           <BlogAuthor name="Marcio Fernandes" date={new Date('2021-04-06T19:01:27Z')} />
         </Box>
@@ -144,8 +142,7 @@ export default function Dashboard(){
               </Link>
             </Heading>
             <Text as="p" fontSize="md" marginTop="2">
-              São atualmente as marcas que tem se mantido em primeiro lugar
-              na corrida de processadores poderosos e com preços acessíveis!
+              Texto
             </Text>
             <BlogAuthor
               name="John Doe"
@@ -158,7 +155,6 @@ export default function Dashboard(){
         <Heading as="h2">Sobre o Site</Heading>
         <Text as="p" fontSize="lg">
           Este site foi construído com objetivo de obter nota de PDM.
-          com isso, negão deve um rodizio de pasteis a Marcio kkk
         </Text>
       </VStack>
     </Container>
